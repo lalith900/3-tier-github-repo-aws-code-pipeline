@@ -9,8 +9,9 @@ phases:
 
   pre_build:
     commands:
-      - aws secretsmanager get-secret-value --secret-id key2 --query SecretString --output text > private_key.pem
+      - aws secretsmanager get-secret-value --secret-id key2 --query SecretString --output text | tr -d '\r' > private_key.pem
       - chmod 400 private_key.pem
+      - head -1 private_key.pem
 
   build:
     commands:
