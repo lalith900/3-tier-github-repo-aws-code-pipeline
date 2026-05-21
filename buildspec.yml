@@ -30,5 +30,5 @@ phases:
 
       - ssh -o StrictHostKeyChecking=no \
         -i private_key.pem \
-        ubuntu@http://3.208.73.219/ \
+        ubuntu@32.192.194.39 \
         "cd /home/ubuntu/3tier-project && ./deploy.sh"
