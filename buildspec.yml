@@ -16,7 +16,7 @@ phases:
 
       - echo "Fetching SSH private key from Secrets Manager"
 
-      - aws secretsmanager get-secret-value --secret-id new-key --query SecretString --output text > private_key.pem
+      - aws secretsmanager get-secret-value --secret-id key1 --query SecretString --output text > private_key.pem
 
       - chmod 400 private_key.pem
 
