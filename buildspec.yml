@@ -4,26 +4,14 @@ phases:
 
   install:
     commands:
-
-      - echo "Installing packages"
-
       - apt-get update
-
       - apt-get install -y openssh-client jq
 
   pre_build:
     commands:
-
-      - echo "Fetching SSH private key from Secrets Manager"
-
       - aws secretsmanager get-secret-value --secret-id key1 --query SecretString --output text > private_key.pem
-
       - chmod 400 private_key.pem
 
   build:
     commands:
-
-      - echo "Connecting to EC2 and deploying application"
-
-      - ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@32.192.194.39 "cd /home/ubuntu/3tier-project && ./deploy.sh"
-        "cd /home/ubuntu/3tier-project && ./deploy.sh"
+      - ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@32.192.194.39 'cd /home/ubuntu/3tier-project && ./deploy.sh'
